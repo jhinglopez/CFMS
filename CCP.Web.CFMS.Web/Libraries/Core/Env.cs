@@ -1,4 +1,6 @@
-﻿namespace CCP.Web.CFMS.Web.Libraries.Core
+﻿using System;
+
+namespace CCP.Web.CFMS.Web.Libraries.Core
 {
     public class Env
     {
@@ -6,6 +8,11 @@
         {
             string version = "v." + typeof(MvcApplication).Assembly.GetName().Version.ToString();
             return version;
+        }
+
+        public static string Versioning()
+        {
+            return Guid.NewGuid().ToString().Replace("-", "");
         }
     }
 }

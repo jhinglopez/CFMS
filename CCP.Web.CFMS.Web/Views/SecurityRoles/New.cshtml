@@ -1,4 +1,5 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
     ViewBag.Title = "Roles New";
 }
@@ -10,11 +11,11 @@
             border-bottom: none;
             border-top: none;
         }
+
         .ui.basic.table tbody tr {
             border-bottom: none;
             border-top: none;
         }
- 
     </style>
 }
 
@@ -62,5 +63,5 @@
 
 @section scripts
 {
-    <script type="text/javascript" src="/js/app/roles/add.js"></script>
+    <script type="text/javascript" src="/js/app/roles/add.js?v=@Env.Versioning()"></script>
 }

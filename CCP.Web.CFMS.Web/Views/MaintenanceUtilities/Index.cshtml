@@ -1,4 +1,5 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
     ViewBag.Title = "Utilities";
 }
@@ -35,5 +36,5 @@
 
 @section scripts
 {
-    <script type="text/javascript" src="/js/app/utilities/index.js"></script>
+    <script type="text/javascript" src="/js/app/utilities/index.js?v=@Env.Versioning()"></script>
 }

@@ -7,7 +7,7 @@
         }
         else {
             $.ajax({
-                url: window.location.origin + "/Maintenance/SaveUtilityType",
+                url: window.location.origin + "/MaintenanceUtilityType/SaveUtilityType",
                 data: {
                     id: "0",
                     name: _name
@@ -30,7 +30,7 @@
     },
 
     fnReturn: function () {
-        window.location.href = window.location.origin + "/Maintenance/UtilityType";
+        window.location.href = window.location.origin + "/Maintenance/Utility-Type";
     }
 
 };

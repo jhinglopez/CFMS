@@ -2,7 +2,7 @@
 
     fnInitializeTable: function () {
         $.ajax({
-            url: window.location.origin + "/Maintenance/GetUtilityType",
+            url: window.location.origin + "/MaintenanceUtilityType/GetUtilityType",
             type: "POST",
             cache: false,
             success: function (data) {
@@ -10,7 +10,7 @@
                 if (data.length > 0) {
                     data.forEach(function (item, index) {
                         _html += "<tr>";
-                        _html += "<td class=\"collapsing\"><a href=\"/Maintenance/UtilityTypeDetail/?name=" + helpers.fnNormalizeUrl(item.Name) + "&id=" + item.Id + "\" title=\"edit\"><i class=\"edit icon\"></i></a></td>";
+                        _html += "<td class=\"collapsing\"><a href=\"/Maintenance/Utility-Type/Detail/" + helpers.fnNormalizeUrl(item.Name) + "/" + item.Id + "\" title=\"edit\"><i class=\"edit icon\"></i></a></td>";
                         _html += "<td class=\"collapsing\"><a href=\"#\" title=\"delete\" onclick=\"utilitytype_index.fnDeleteConfirmation('" + item.Id + "');\"><i class=\"trash alternate icon\"></i></a></td>";
                         _html += "<td class=\"top aligned\">" + item.Name + "</td>";
                         _html += "</tr>";
@@ -38,7 +38,7 @@
     fnDelete: function () {
         var _id = $("#__id").val();
         $.ajax({
-            url: window.location.origin + "/Maintenance/DeleteUtilityType",
+            url: window.location.origin + "/MaintenanceUtilityType/DeleteUtilityType",
             data: {
                 id: _id
             },
@@ -59,7 +59,7 @@
     },
 
     fnRefresh: function () {
-        window.location.href = window.location.origin + "/Maintenance/UtilityType";
+        window.location.href = window.location.origin + "/MaintenanceUtilityType/UtilityType";
     }
 
 };

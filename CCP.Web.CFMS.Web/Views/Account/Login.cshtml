@@ -135,7 +135,7 @@
                     </div>
                     <div class="row">
                         <div class="column center aligned formcontrol-style">
-                            @Html.DropDownListFor(m => m.SelectedChapel, Model.ListChapels, "-- Select Chapel --", new { @id = "txtChapel", @name = "txtPassword", @class = "dropdown-style" })
+                            @Html.DropDownListFor(m => m.SelectedChapel, Model.ListChapels, "-- Select Chapel --", new { @id = "txtChapel", @name = "txtChapel", @class = "dropdown-style" })
                         </div>
                     </div>
                     <div class="row">
@@ -215,8 +215,8 @@
     <script type="text/javascript" src="/js/semantic-ui/components/popup.min.js"></script>
     <script type="text/javascript" src="/js/semantic-ui/components/sidebar.min.js"></script>
     <script type="text/javascript" src="/js/semantic-ui/components/tab.min.js"></script>
-    <script type="text/javascript" src="/js/app/common/helpers.js"></script>
-    <script type="text/javascript" src="/js/app/login/login.js"></script>
+    <script type="text/javascript" src="/js/app/common/helpers.js?v=@Env.Versioning()"></script>
+    <script type="text/javascript" src="/js/app/login/login.js?v=@Env.Versioning()"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             @Html.Raw(ViewBag.Script)

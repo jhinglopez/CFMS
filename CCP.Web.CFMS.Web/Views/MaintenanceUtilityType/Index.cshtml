@@ -1,7 +1,39 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Utility Type";
 }
 
-<h2>Index</h2>
+<div class="ui breadcrumb">
+    <a class="section" href="/">Home</a>
+    <div class="divider"> / </div>
+    <div class="section">Maintenance</div>
+    <div class="divider"> / </div>
+    <div class="active section">Utility Type</div>
+</div>
 
+<div style="padding-top:40px;">
+    <div>
+        <a id="btnAdd" class="ui primary button" href="/Maintenance/Utility-Type/New">Add New Record</a>
+    </div>
+    <div style="padding-top:10px;">
+        <table class="ui blue selectable celled table">
+            <thead>
+                <tr>
+                    <th class="collapsing">&nbsp;</th>
+                    <th class="collapsing">&nbsp;</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="__id" value="@ViewBag.Id" />
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/app/utilitytype/index.js?v=@Env.Versioning()"></script>
+}

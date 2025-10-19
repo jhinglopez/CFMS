@@ -3,7 +3,7 @@
     fnInitializeDetail: function () {
         var _id = $("#__id").val();
         $.ajax({
-            url: window.location.origin + "/Maintenance/GetUtilityTypeById",
+            url: window.location.origin + "/MaintenanceUtilityType/GetUtilityTypeById",
             data: {
                 id: _id
             },
@@ -29,7 +29,7 @@
         }
         else {
             $.ajax({
-                url: window.location.origin + "/Maintenance/SaveUtilityType",
+                url: window.location.origin + "/MaintenanceUtilityType/SaveUtilityType",
                 data: {
                     id: _id,
                     name: _name
@@ -52,7 +52,7 @@
     },
 
     fnReturn: function () {
-        window.location.href = window.location.origin + "/Maintenance/UtilityType";
+        window.location.href = window.location.origin + "/Maintenance/Utility-Type";
     }
 
 };

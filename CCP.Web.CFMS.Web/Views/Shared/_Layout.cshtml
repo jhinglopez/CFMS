@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="/js/semantic-ui/components/sidebar.min.css" />
     <link rel="stylesheet" href="/js/semantic-ui/components/tab.min.css" />
     <link rel="stylesheet" href="/js/semantic-ui/components/table.css" />
+    <style>
+        .white-space-no-wrap {
+            white-space: nowrap;
+        }
+    </style>
     @RenderSection("styles", required: false)
 </head>
 <body>
@@ -97,10 +102,10 @@
     <div style="padding: 50px 50px 20px 50px;">
         <hr />
         <p>
-            <i class="rss icon"></i>@Config.SelectedChapelName()<br />
-            &copy; @DateTime.Now.Year Students of Central Colleges of the Philippines.<br />
-            All Rights Reserved.<br />
-            @Env.EnvironmentServerVersion()
+            <span class="white-space-no-wrap"><i class="rss icon"></i>@Config.SelectedChapelName() | </span>
+            <span class="white-space-no-wrap">&copy; @DateTime.Now.Year Students of Central Colleges of the Philippines | </span>
+            <span class="white-space-no-wrap">All Rights Reserved | </span>
+            <span class="white-space-no-wrap">@Env.EnvironmentServerVersion()</span>
         </p>
     </div>
 
@@ -120,7 +125,7 @@
     <script type="text/javascript" src="/js/semantic-ui/components/popup.min.js"></script>
     <script type="text/javascript" src="/js/semantic-ui/components/sidebar.min.js"></script>
     <script type="text/javascript" src="/js/semantic-ui/components/tab.min.js"></script>
-    <script type="text/javascript" src="~/js/app/common/helpers.js"></script>
+    <script type="text/javascript" src="~/js/app/common/helpers.js?v=@Env.Versioning()"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

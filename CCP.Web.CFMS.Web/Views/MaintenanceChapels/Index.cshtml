@@ -1,4 +1,5 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
     ViewBag.Title = "Chapels";
 }
@@ -34,5 +35,5 @@
 
 @section scripts
 {
-    <script type="text/javascript" src="/js/app/chapels/index.js"></script>
+    <script type="text/javascript" src="/js/app/chapels/index.js?v=@Env.Versioning()"></script>
 }
