@@ -1,0 +1,33 @@
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('18AA455D-0221-4395-A40F-D7E48AF54698', '/Security-Users/Detail', 'Security', 'Security : Users : Detail', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('4AD691EC-5E1C-46BE-AF5A-C4D2009519F6', '/Security-Users', 'Security', 'Security : Users', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('4E3D937C-0D6A-4E93-A149-A6838146F60C', '/Security-Roles/New', 'Security', 'Security : Roles : New', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('67E2FCB0-CAA3-47F5-AC65-73847D22C2DF', '/Security-Roles/Delete', 'Security', 'Security : Roles : Delete', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('69938949-6DE0-4A6A-AC0F-DF106E0D3EA1', '/Security-Users/Delete', 'Security', 'Security : Users : Delete', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('BCFA9A1E-E3B6-4FF5-A0AB-AF4A01B0F59A', '/Security-Roles/Detail', 'Security', 'Security : Roles : Detail', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('F479DE17-F07D-4211-AF81-A55372F67976', '/Security-Users/New', 'Security', 'Security : Users : New', 0, 1)
+GO
+
+INSERT INTO dbo.AspNetPages (Id, PagePath, Folder, PageDescription, SortId, IsActive)
+VALUES ('FC4DAF74-E967-41E7-8E63-DBBAB252794E', '/Security-Roles', 'Security', 'Security : Roles', 0, 1)
+GO
+

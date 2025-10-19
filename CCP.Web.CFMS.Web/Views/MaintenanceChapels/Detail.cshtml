@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Chapel Detail";
+}
+
+<div class="ui breadcrumb">
+    <a class="section" href="/">Home</a>
+    <div class="divider"> / </div>
+    <div class="section">Maintenance</div>
+    <div class="divider"> / </div>
+    <a class="section" href="/Maintenance/Chapels">Chapels</a>
+    <div class="divider"> / </div>
+    <div class="active section">Detail</div>
+</div>
+
+<div style="padding-top:40px;">
+    <div align="right">
+        <button id="btnSave" class="ui primary button" style="width:120px;">Save</button>
+        <button id="btnReturn" class="ui button">Return</button>
+    </div>
+    <hr />
+    <div style="padding-top:10px;" align="center">
+        <table class="ui very basic collapsing table" style="width:100%; max-width:800px;">
+            <tr>
+                <td class="collapsing">
+                    <label>Chapel Name *</label>
+                </td>
+                <td>
+                    <div class="ui input" style="width:100%"><input id="txtName" type="text" maxlength="256" /></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="__id" value="@ViewBag.Id" />
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/app/chapels/edit.js"></script>
+}

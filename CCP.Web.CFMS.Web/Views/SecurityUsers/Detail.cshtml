@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "User Detail";
+}
+
+@section styles
+{
+    <style>
+        .ui.table tr td {
+            border-bottom: none;
+            border-top: none;
+        }
+
+        .ui.basic.table tbody tr {
+            border-bottom: none;
+            border-top: none;
+        }
+    </style>
+}
+
+<div class="ui breadcrumb">
+    <a class="section" href="/">Home</a>
+    <div class="divider"> / </div>
+    <div class="section">Security</div>
+    <div class="divider"> / </div>
+    <a class="section" href="/Security/Users">Users</a>
+    <div class="divider"> / </div>
+    <div class="active section">Detail</div>
+</div>
+
+<div style="padding-top:40px;">
+    <div align="right">
+        <button id="btnSave" class="ui primary button" style="width:120px;">Save</button>
+        <button id="btnReturn" class="ui button">Return</button>
+    </div>
+    <hr />
+    <div style="padding-top:10px;" align="center">
+        <table class="ui very basic collapsing table" style="width:100%; max-width:800px;">
+            <tbody>
+                <tr>
+                    <td class="collapsing">
+                        <label>Username *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width:100%;"><input id="txtUserName" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="collapsing">
+                        <label>FullName *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtFullName" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="collapsing">
+                        <label>Email *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtEmail" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="collapsing">
+                        <label>Role *</label>
+                    </td>
+                    <td>
+                        <div id="ddlRole" class="ui fluid selection dropdown">
+                            <input id="txtRole" name="txtRole" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select role --</div>
+                            <div id="divRoles" class="menu">
+                                @Html.Raw(ViewBag.Items)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="__id" value="@ViewBag.Id" />
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/app/users/edit.js"></script>
+}

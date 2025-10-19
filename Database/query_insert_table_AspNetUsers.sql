@@ -1,0 +1,11 @@
+INSERT INTO dbo.AspNetUsers (Id, ChapelId, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount, UserName, FullName, SecuritySignum, IsActive, Company, CountryCode, AuditCreateDate, AuditCreateUser, AuditUpdateDate, AuditUpdateUser)
+VALUES ('1E622A37-EC22-4616-9F16-6B89125D4251', 'E7FC3F2D-A3A9-4D15-B28A-9B942C623D6E', 'jhinglopez@gmail.com', 0, 'ALvKxPH44oYCBHKMPtoGFqgwSkTY77X6H+LfWyWx1iVb7PrKCgWM8bZ7kJ/CBdgQqA==', '570cb0e3-b2d1-4d9f-984e-cf866b642919', NULL, 0, 0, NULL, 1, 0, 'Admin', 'Administrator', '', 1, '', '', '10/15/2025 09:26:55.997 PM', 'dbo', '10/15/2025 09:26:55.997 PM', 'dbo')
+GO
+
+INSERT INTO dbo.AspNetUsers (Id, ChapelId, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount, UserName, FullName, SecuritySignum, IsActive, Company, CountryCode, AuditCreateDate, AuditCreateUser, AuditUpdateDate, AuditUpdateUser)
+VALUES ('9e88824d-0e4a-42df-bc2b-f5a5894ca1de', '6387E6C7-70CC-4296-B31D-C32D8261EAEA', 'admin-corazon@mail.com', 0, 'ACynmT062BhnmWfUIfOFYoSoGx1JiooyoqH6xagihTPNsKEiT67d9FmLrF6M2U5drg==', 'a54d6c65-6817-47d3-9dd0-88bc695f58bb', NULL, 0, 0, NULL, 1, 0, 'Admin Sagrado Corazon', 'Admin Sagrado Corazon', NULL, NULL, NULL, NULL, '10/19/2025 02:00:05.66 AM', 'Admin', '10/19/2025 02:00:05.66 AM', 'Admin')
+GO
+
+INSERT INTO dbo.AspNetUsers (Id, ChapelId, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount, UserName, FullName, SecuritySignum, IsActive, Company, CountryCode, AuditCreateDate, AuditCreateUser, AuditUpdateDate, AuditUpdateUser)
+VALUES ('af0e8df0-0220-427b-8d65-89a4952cc82e', 'E7FC3F2D-A3A9-4D15-B28A-9B942C623D6E', 'admin-sagrada@mail.com', 0, 'ANzZDgUMoRAQqcvQ27+ONTBRMAWLYgFsaWUdyU6ajDH3q13XHG3xrX6oS8bDR3D14w==', '38112a68-30b6-49ba-984c-f0922b22353a', NULL, 0, 0, NULL, 1, 0, 'Admin Sagrada Familia', 'Admin Sagrada Familia', NULL, NULL, NULL, NULL, '10/19/2025 01:58:15.343 AM', 'Admin', '10/19/2025 01:58:15.343 AM', 'Admin')
+GO
