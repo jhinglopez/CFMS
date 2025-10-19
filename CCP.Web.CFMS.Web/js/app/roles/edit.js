@@ -14,6 +14,9 @@
                     data.forEach(function (item, index) {
                         $("#txtName").val(item.Name);
                         $("#txtDescription").val(item.Description);
+                        if (item.Name.toLowerCase() == "admin") {
+                            $("#btnSave").hide();
+                        }
                     });
                 }
             },

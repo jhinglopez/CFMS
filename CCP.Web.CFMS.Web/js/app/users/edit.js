@@ -16,6 +16,9 @@
                         $("#txtFullName").val(item.FullName);
                         $("#txtEmail").val(item.Email);
                         $("#ddlRole").dropdown("set selected", item.RoleId);
+                        if (item.UserName.toLowerCase() == "admin") {
+                            $("#btnSave").hide();
+                        }
                     });
                 }
             },
