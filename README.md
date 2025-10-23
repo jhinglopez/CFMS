@@ -1,5 +1,6 @@
 Chapel Fund Management System (CFMS)
 ====================================
+version 1.0.4.*
 
 This project is for educational purposes only.
 
