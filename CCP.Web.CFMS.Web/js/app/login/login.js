@@ -7,9 +7,6 @@
         else if ($("#txtPassword").val().trim() == "") {
             login.fnLoginError("Login failed. Invalid password.");
         }
-        else if ($("#txtChapel").val().trim() == "") {
-            login.fnLoginError("Login failed. Invalid selected chapel.");
-        }
         else {
             $("#btnLogin").addClass("disabled");
             $("#btnLogin").addClass("loading");

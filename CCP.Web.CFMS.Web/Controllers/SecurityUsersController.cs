@@ -43,7 +43,7 @@ namespace CCP.Web.CFMS.Web.Controllers
             List<AspNetUsersModel> model = new List<AspNetUsersModel>();
             try
             {
-                model = UsersServices.GetUsers(Request.Cookies["__cid"].Value);
+                model = UsersServices.GetUsers();
             }
             catch
             {

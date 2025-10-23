@@ -1,7 +1,138 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cash InFlows";
 }
 
-<h2>Index</h2>
+@section styles
+{
+    <style>
+        .ui.table tr td {
+            border-bottom: none;
+            border-top: none;
+        }
 
+        .ui.basic.table tbody tr {
+            border-bottom: none;
+            border-top: none;
+        }
+    </style>
+}
+
+<div class="ui breadcrumb">
+    <a class="section" href="/">Home</a>
+    <div class="divider"> / </div>
+    <div class="section">Transactions</div>
+    <div class="divider"> / </div>
+    <div class="active section">Cash InFlows</div>
+</div>
+
+<div style="padding-top:40px;">
+    <div align="right">
+        <button id="btnSave" class="ui primary button" style="width:120px;">Save</button>
+        <button id="btnClear" class="ui button">Cancel</button>
+    </div>
+    <hr />
+    <div style="padding-top:10px;" align="center">
+        <table class="ui very basic collapsing table" style="width:100%; max-width:800px;">
+            <tbody>
+                <!-- chapel -->
+                <tr>
+                    <td class="collapsing">
+                        <label>Chapel *</label>
+                    </td>
+                    <td>
+                        <div id="ddlChapel" class="ui fluid selection dropdown">
+                            <input id="txtChapel" name="txtChapel" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select chapel --</div>
+                            <div id="divChapels" class="menu">
+                                @Html.Raw(ViewBag.Chapels)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- transaction type -->
+                <tr>
+                    <td class="collapsing">
+                        <label>Transaction Type *</label>
+                    </td>
+                    <td>
+                        <div id="ddlTranType" class="ui fluid selection dropdown">
+                            <input id="txtTranType" name="txtTranType" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select transaction type --</div>
+                            <div id="divTranTypes" class="menu">
+                                <div class="item" data-value="MassCollections">Mass Collections</div>
+                                <div class="item" data-value="SpecialIntentionOffering">Special Intention Offering</div>
+                                <div class="item" data-value="Sponsorship">Sponsorship</div>
+                                <div class="item" data-value="Donation">Donation</div>
+                                <div class="item" data-value="SecondCollection">Second Collection</div>
+                                <div class="item" data-value="VentureRevenue">Venture Revenue</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- detail fields -->
+                <tr id="trTranDate" style="display:none">
+                    <td class="collapsing">
+                        <label>Transaction Date *</label>
+                    </td>
+                    <td>
+                        <div id="txtDateToCalendar" class="ui calendar">
+                            <div class="ui input left icon" style="width:100%;">
+                                <i class="calendar alternate outline icon"></i>
+                                <input id="txtTranDate" type="text" placeholder="Date/Time" readonly>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="trName" style="display:none">
+                    <td class="collapsing">
+                        <label id="lblTranName">Name *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtName" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr id="trReferenceTitle" style="display:none">
+                    <td class="collapsing">
+                        <label id="lblReferenceTitle">Reference Title *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtReferenceTitle" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr id="trProjectTitle" style="display:none">
+                    <td class="collapsing">
+                        <label id="lblProjectTitle">Project Title *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtProjectTitle" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr id="trAmount" style="display:none">
+                    <td class="collapsing">
+                        <label>Amount *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtAmount" type="text" maxlength="256" placeholder="0.00" /></div>
+                    </td>
+                </tr>
+                <tr id="trAcknowledgementReceipt" style="display:none">
+                    <td class="collapsing">
+                        <label>Acknowledgement Receipt *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtAcknowledgementReceipt" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/app/cash-inflows/index.js?v=@Env.Versioning()"></script>
+}

@@ -6,9 +6,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CCP.Web.CFMS.Web.Models;
 using System;
-using System.Collections.Generic;
-using CCP.Web.CFMS.Domain;
-using CCP.Web.CFMS.Serevices;
 
 namespace CCP.Web.CFMS.Web.Controllers
 {
@@ -56,14 +53,7 @@ namespace CCP.Web.CFMS.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            List<tblChapelsModel> chapelList = ChapelsServices.GetChapels();
-            //var data = new List<SelectListItem>
-            //{
-            //    new SelectListItem { Value = item.Id, Text = item.Name }
-            //};
-            var model = new LoginViewModel();
-            model.ListChapels = new SelectList(chapelList, "Id", "Name");
-            return View(model);
+            return View();
         }
 
         [HttpPost]
@@ -71,13 +61,12 @@ namespace CCP.Web.CFMS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (model.Username != null && model.Password != null && model.SelectedChapel != null)
+            if (model.Username != null && model.Password != null)
             {
                 var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, shouldLockout: false);
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        Response.Cookies["__cid"].Value = model.SelectedChapel;
                         return RedirectToLocal(returnUrl);
                     default:
                         ViewBag.Script = "login.fnLoginError(\"Login failed. Invalid username or password.\");";

@@ -9,12 +9,12 @@ namespace CCP.Web.CFMS.Repository.Procedures
     {
         private static readonly int commandTimeOut = 300;
 
-        public static List<AspNetUsersModel> GetUsers(string chapelId)
+        public static List<AspNetUsersModel> GetUsers()
         {
             using (CFMSEntities db = new CFMSEntities())
             {
                 db.Database.CommandTimeout = commandTimeOut;
-                return db.Database.SqlQuery<AspNetUsersModel>("dbo.usp_GetUsers {0}", chapelId).ToList();
+                return db.Database.SqlQuery<AspNetUsersModel>("dbo.usp_GetUsers").ToList();
             }
         }
 

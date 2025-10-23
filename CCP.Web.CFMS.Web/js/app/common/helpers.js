@@ -86,6 +86,16 @@
         else {
             return false;
         }
+    },
+
+    fnIsValidAmount: function (amount) { 
+        var pattern = /^\d*\.?\d+$/;
+        if (pattern.test(amount)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 };

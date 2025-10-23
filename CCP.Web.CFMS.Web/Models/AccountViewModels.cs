@@ -1,7 +1,4 @@
-﻿using CCP.Web.CFMS.Domain;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CCP.Web.CFMS.Web.Models
 {
@@ -28,9 +25,5 @@ namespace CCP.Web.CFMS.Web.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        public string SelectedChapel { get; set; }
-
-        public SelectList ListChapels { get; set; }
     }
 }

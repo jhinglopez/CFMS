@@ -6,9 +6,9 @@ namespace CCP.Web.CFMS.Serevices
 {
     public class UsersServices
     {
-        public static List<AspNetUsersModel> GetUsers(string chapelId)
+        public static List<AspNetUsersModel> GetUsers()
         {
-            return UsersRepository.GetUsers(chapelId);
+            return UsersRepository.GetUsers();
         }
 
         public static List<AspNetUsersModel> GetUsersById(string chapelId, string id)

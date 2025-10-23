@@ -3,8 +3,6 @@ IF OBJECT_ID ('dbo.usp_GetUsers') IS NOT NULL
 GO
 
 CREATE PROCEDURE dbo.usp_GetUsers
-
-	@ChapelId NVARCHAR(128)
 	
 AS
 SET NOCOUNT ON 
@@ -22,7 +20,6 @@ SELECT 		a.Id,
 FROM 		dbo.AspNetUsers a
 LEFT JOIN 	dbo.AspNetUserRoles b ON a.Id = b.UserId
 LEFT JOIN 	dbo.AspNetRoles c ON b.RoleId = c.Id
-WHERE 		a.ChapelId = @ChapelId OR a.UserName = 'admin'
 ORDER BY 	a.UserName
 GO
 
