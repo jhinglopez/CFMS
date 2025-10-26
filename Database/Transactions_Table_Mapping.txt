@@ -1,0 +1,30 @@
+
+tblCashInflows:
+
+TranType, 			TranDate, 	Name, 			ReferenceTitle, 	Amount, 	AcknowledgementReceipt
+---------------------------------------------------------------------------------------------------------------------------
+Mass Collections	Date 		Celebrant 		Reference Title 	Amount
+Special Offerings	Date 		Offeror 		Reference Title 	Amount 		Acknowledgement Receipt
+Sponsorship 		Date 		Sponsor 		Reference Title 	Amount 		Acknowledgement Receipt
+Donation 			Date 		Donor 			Project Title		Amount 		Acknowledgement Receipt
+Second Collection 	Date 		Celebrant 		Reference Title 	Amount 		
+Venture Revenue 	Date 		Venture Title 						Amount 		Acknowledgement Receipt
+
+
+tblCashOutflows:
+
+TranType, 		Category, 	TranDate, 	Name, 				ReferenceTitle, 	Amount, 	ItemName, 	ApprovalUserId
+---------------------------------------------------------------------------------------------------------------------------
+Utility Bills 	.. 			Date 		Assigned Person 	Reference Title 	Amount
+Stipend 		.. 			Date 		Recipient 			Reference Title 	Amount
+Services 		.. 			Date 		Service Provider 	Reference Title 	Amount 					Parish Approver
+Supplies 		.. 			Date 		Assigned Person 						Amount 		Item Name 	Parish Approver
+
+
+tblForwardings:
+
+TranType, 			TranDate, 	Name, 		Amount, 	VentureTitle, 	Beneficiary, 	ApprovalUserId
+---------------------------------------------------------------------------------------------------------------------------
+Parish Share 		Date 					Amount										Parish Approver
+Venture Allocation 	Date		Key Person 	Amount 		Venture Title 					Parish Approver
+Assistance Fund 	Date 		Key Person 	Amount 						Beneficiary 	Parish Approver

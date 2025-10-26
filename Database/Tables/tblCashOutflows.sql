@@ -7,6 +7,7 @@ CREATE TABLE dbo.tblCashOutflows
 	Id              NVARCHAR (128) NOT NULL,
 	ChapelId        NVARCHAR (128),
 	TranType        NVARCHAR (256),
+	Category 		NVARCHAR (256),
 	TranDate        DATETIME,
 	Name            NVARCHAR (256),
 	ReferenceTitle  NVARCHAR (256),

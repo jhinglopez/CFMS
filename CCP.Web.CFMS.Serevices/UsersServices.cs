@@ -11,24 +11,24 @@ namespace CCP.Web.CFMS.Serevices
             return UsersRepository.GetUsers();
         }
 
-        public static List<AspNetUsersModel> GetUsersById(string chapelId, string id)
+        public static List<AspNetUsersModel> GetUsersById(string id)
         {
-            return UsersRepository.GetUsersById(chapelId, id);
+            return UsersRepository.GetUsersById(id);
         }
 
-        public static void SaveUsers(string chapelId, string username, string fullname, string roleId, string auditUser)
+        public static void SaveUsers(string username, string fullname, string roleId, string auditUser)
         {
-            UsersRepository.SaveUsers(chapelId, username, fullname, roleId, auditUser);
+            UsersRepository.SaveUsers(username, fullname, roleId, auditUser);
         }
 
-        public static string UpdateUsers(string chapelId,string id, string username, string fullname, string email, string roleId, string auditUser)
+        public static string UpdateUsers(string id, string username, string fullname, string email, string roleId, string auditUser)
         {
-            return UsersRepository.UpdateUsers(chapelId,id, username, fullname, email, roleId, auditUser);
+            return UsersRepository.UpdateUsers(id, username, fullname, email, roleId, auditUser);
         }
 
-        public static void DeleteUsers(string chapelId, string id)
+        public static void DeleteUsers(string id)
         {
-            UsersRepository.DeleteUsers(chapelId,id);
+            UsersRepository.DeleteUsers(id);
         }
     }
 }

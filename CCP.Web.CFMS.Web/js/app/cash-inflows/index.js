@@ -20,8 +20,8 @@
                 $("#trReferenceTitle").show();
                 $("#trAmount").show();
                 $("#trAcknowledgementReceipt").hide();
-                $("#trProjectTitle").hide();
                 $("#lblTranName").text("Celebrant *");
+                $("#lblReferenceTitle").text("Reference Title *");
             }
             else if (_type.toLowerCase() == "specialintentionoffering") {
                 $("#trTranDate").show();
@@ -29,8 +29,8 @@
                 $("#trReferenceTitle").show();
                 $("#trAmount").show();
                 $("#trAcknowledgementReceipt").show();
-                $("#trProjectTitle").hide();
                 $("#lblTranName").text("Name of Offeror *");
+                $("#lblReferenceTitle").text("Reference Title *");
             }
             else if (_type.toLowerCase() == "sponsorship") {
                 $("#trTranDate").show();
@@ -38,8 +38,8 @@
                 $("#trReferenceTitle").show();
                 $("#trAmount").show();
                 $("#trAcknowledgementReceipt").show();
-                $("#trProjectTitle").hide();
                 $("#lblTranName").text("Name of Sponsor *");
+                $("#lblReferenceTitle").text("Reference Title *");
             }
             else if (_type.toLowerCase() == "donation") {
                 $("#trTranDate").show();
@@ -47,8 +47,9 @@
                 $("#trProjectTitle").show();
                 $("#trAmount").show();
                 $("#trAcknowledgementReceipt").show();
-                $("#trReferenceTitle").hide();
+                $("#trReferenceTitle").show();
                 $("#lblTranName").text("Name of Donor *");
+                $("#lblReferenceTitle").text("Project Title *");
             }
             else if (_type.toLowerCase() == "secondcollection") {
                 $("#trTranDate").show();
@@ -58,6 +59,7 @@
                 $("#trProjectTitle").hide();
                 $("#trAcknowledgementReceipt").hide();
                 $("#lblTranName").text("Celebrant *");
+                $("#lblReferenceTitle").text("Reference Title *");
             }
             else if (_type.toLowerCase() == "venturerevenue") {
                 $("#trTranDate").show();
@@ -65,8 +67,8 @@
                 $("#trAmount").show();
                 $("#trAcknowledgementReceipt").show();
                 $("#trReferenceTitle").hide();
-                $("#trProjectTitle").hide();
                 $("#lblTranName").text("Venture Title *");
+                $("#lblReferenceTitle").text("Reference Title *");
             }
         }
     },
@@ -75,7 +77,6 @@
         var _tranDate = $("#txtTranDate").val();
         var _tranName = $("#txtName").val();
         var _referenceTitle = $("#txtReferenceTitle").val();
-        var _projectTitle = $("#txtProjectTitle").val();
         var _amount = $("#txtAmount").val();
         var _acknowledgementReceipt = $("#txtAcknowledgementReceipt").val();
         if (_tranDate.trim() == "") {
@@ -87,9 +88,6 @@
         else if ($('#trReferenceTitle').is(':visible') && _referenceTitle.trim() == "") {
             helpers.fnModal("Save failed. Reference title is a required field.", "error");
         }
-        else if ($('#trProjectTitle').is(':visible') && _projectTitle.trim() == "") {
-            helpers.fnModal("Save failed. Project title is a required field.", "error");
-        }
         else if (_amount.trim() == "") {
             helpers.fnModal("Save failed. Amount is a required field.", "error");
         }
@@ -100,7 +98,9 @@
             helpers.fnModal("Save failed. Acknowledgement receipt is a required field.", "error");
         }
         else {
-            alert("Saved!");
+            _amount = Number(_amount).toFixed(2);
+            $("#txtAmount").val(_amount);
+            alert("Saved! ");
             cashinflows_index.fnNewTransaction();
         }
     },
@@ -111,10 +111,8 @@
 
     fnNewTransaction: function () {
         $("#txtTranDate").val("");
-        $("#txtTranTime").val("");
         $("#txtName").val("");
         $("#txtReferenceTitle").val("");
-        $("#txtProjectTitle").val("");
         $("#txtAmount").val("");
         $("#txtAcknowledgementReceipt").val("");
     },
@@ -125,10 +123,8 @@
         $("#ddlChapel").dropdown("clear");
         $("#ddlTranType").dropdown("clear");
         $("#txtTranDate").val("");
-        $("#txtTranTime").val("");
         $("#txtName").val("");
         $("#txtReferenceTitle").val("");
-        $("#txtProjectTitle").val("");
         $("#txtAmount").val("");
         $("#txtAcknowledgementReceipt").val("");
         $("#trTranDate").hide();
@@ -136,7 +132,11 @@
         $("#trReferenceTitle").hide();
         $("#trAmount").hide();
         $("#trAcknowledgementReceipt").hide();
-        $("#trProjectTitle").hide();
+    },
+
+    fnFormatAmount: function () {
+        var _amount = $("#txtAmount").val();
+        $("#txtAmount").val(helpers.fnFormatAmount(_amount));
     }
 
 };
@@ -155,8 +155,16 @@ $(function () {
         cashinflows_index.fnClearConfirmation();
     });
 
+    $("#ddlChapel").change(function () {
+        cashinflows_index.fnInitializeDetails();
+    });
+
     $("#ddlTranType").change(function () {
         cashinflows_index.fnInitializeDetails();
+    });
+
+    $("#txtAmount").keyup(function (event) {
+        cashinflows_index.fnFormatAmount();
     });
 
 });

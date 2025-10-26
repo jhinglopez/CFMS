@@ -57,7 +57,7 @@ namespace CCP.Web.CFMS.Web.Controllers
             List<AspNetUsersModel> model = new List<AspNetUsersModel>();
             try
             {
-                model = UsersServices.GetUsersById(Request.Cookies["__cid"].Value, id);
+                model = UsersServices.GetUsersById(id);
             }
             catch
             {
@@ -75,7 +75,7 @@ namespace CCP.Web.CFMS.Web.Controllers
                 var result1 = UserManager.Create(user, password);
                 if (result1.Succeeded)
                 {
-                    UsersServices.SaveUsers(Request.Cookies["__cid"].Value, username, fullname, roleId, System.Web.HttpContext.Current.User.Identity.Name);
+                    UsersServices.SaveUsers(username, fullname, roleId, System.Web.HttpContext.Current.User.Identity.Name);
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace CCP.Web.CFMS.Web.Controllers
             string result = "";
             try
             {
-                result = UsersServices.UpdateUsers(Request.Cookies["__cid"].Value, id, username, fullname, email, roleId, System.Web.HttpContext.Current.User.Identity.Name);
+                result = UsersServices.UpdateUsers(id, username, fullname, email, roleId, System.Web.HttpContext.Current.User.Identity.Name);
             }
             catch (Exception e)
             {
@@ -116,7 +116,7 @@ namespace CCP.Web.CFMS.Web.Controllers
             string result = "";
             try
             {
-                UsersServices.DeleteUsers(Request.Cookies["__cid"].Value, id);
+                UsersServices.DeleteUsers(id);
             }
             catch (Exception e)
             {

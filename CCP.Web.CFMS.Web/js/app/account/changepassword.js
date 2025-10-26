@@ -34,7 +34,7 @@
     },
 
     fnLogoff: function () {
-        window.location.href = window.location.origin + "/Maintenance/Chapels";
+        window.location.href = window.location.origin + "/Account/LogOff";
     }
 
 };

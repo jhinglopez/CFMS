@@ -96,6 +96,16 @@
         else {
             return false;
         }
+    },
+
+    fnFormatAmount: function (amount) {
+        var _amount = amount;
+        _amount = _amount.replace(/[^0-9.]/g, "");
+        const parts = _amount.split('.');
+        if (parts.length > 2) {
+            _amount = parts[0] + '.' + parts.slice(1, -1).join('') + parts[parts.length - 1];
+        }
+        return _amount;
     }
 
 };

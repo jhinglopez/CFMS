@@ -48,6 +48,8 @@
     <Compile Include="AspNetUsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScalarModel.cs" />
+    <Compile Include="tblCashInflowsModel.cs" />
+    <Compile Include="tblCashOutflowsModel.cs" />
     <Compile Include="tblSiteConfigModel.cs" />
     <Compile Include="tblChapelsModel.cs" />
     <Compile Include="tblUtilitiesModel.cs" />
