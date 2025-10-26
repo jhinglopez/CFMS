@@ -1,6 +1,6 @@
 Chapel Fund Management System (CFMS)
 ====================================
-version 1.0.4.*
+version 1.0.5.* (10.26.2025)
 
 This project is for educational purposes only.
 
