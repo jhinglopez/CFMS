@@ -2,6 +2,7 @@
 
 namespace CCP.Web.CFMS.Web.Controllers
 {
+    [Authorize]
     public class ReportsFundBalancesController : Controller
     {
         [Route("Reports/Fund-Balances")]

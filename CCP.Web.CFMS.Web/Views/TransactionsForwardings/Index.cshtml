@@ -1,7 +1,142 @@
-﻿
+﻿@using CCP.Web.CFMS.Web.Libraries.Core
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Forwardings";
 }
 
-<h2>Index</h2>
+@section styles
+{
+    <style>
+        .ui.table tr td {
+            border-bottom: none;
+            border-top: none;
+        }
 
+        .ui.basic.table tbody tr {
+            border-bottom: none;
+            border-top: none;
+        }
+    </style>
+}
+
+<div class="ui breadcrumb">
+    <a class="section" href="/">Home</a>
+    <div class="divider"> / </div>
+    <div class="section">Transactions</div>
+    <div class="divider"> / </div>
+    <div class="active section">Forwardings</div>
+</div>
+
+<div style="padding-top:40px;">
+    <div align="right">
+        <button id="btnSave" class="ui primary button" style="width:120px;">Save</button>
+        <button id="btnClear" class="ui button">Cancel</button>
+    </div>
+    <hr />
+    <div style="padding-top:10px;" align="center">
+        <table class="ui very basic collapsing table" style="width:100%; max-width:800px;">
+            <tbody>
+                <!-- chapel -->
+                <tr>
+                    <td class="collapsing">
+                        <label>Chapel *</label>
+                    </td>
+                    <td>
+                        <div id="ddlChapel" class="ui fluid selection dropdown">
+                            <input id="txtChapel" name="txtChapel" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select chapel --</div>
+                            <div id="divChapels" class="menu">
+                                @Html.Raw(ViewBag.Chapels)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- transaction type -->
+                <tr>
+                    <td class="collapsing">
+                        <label>Transaction Type *</label>
+                    </td>
+                    <td>
+                        <div id="ddlTranType" class="ui fluid selection dropdown">
+                            <input id="txtTranType" name="txtTranType" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select transaction type --</div>
+                            <div id="divTranTypes" class="menu">
+                                <div class="item" data-value="ParishShare">Parish Share</div>
+                                <div class="item" data-value="VentureAllocation">Venture Allocation</div>
+                                <div class="item" data-value="AssistanceFund">Assistance Fund</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="trTranDate" style="display:none">
+                    <td class="collapsing">
+                        <label>Transaction Date *</label>
+                    </td>
+                    <td>
+                        <div id="txtDateToCalendar" class="ui calendar">
+                            <div class="ui input left icon" style="width:100%;">
+                                <i class="calendar alternate outline icon"></i>
+                                <input id="txtTranDate" type="text" placeholder="Date/Time" readonly>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="trName" style="display:none">
+                    <td class="collapsing">
+                        <label id="lblTranName">Key Person *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtName" type="text" maxlength="256" /></div>
+                    </td>
+                </tr>
+                <tr id="trAmount" style="display:none">
+                    <td class="collapsing">
+                        <label>Amount *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtAmount" type="text" maxlength="256" placeholder="0.00" autocomplete="off" /></div>
+                    </td>
+                </tr>
+                <tr id="trVentureTitle" style="display:none">
+                    <td class="collapsing">
+                        <label id="lblVentureTitle">Venture Title *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtVentureTitle" type="text" maxlength="256" autocomplete="off" /></div>
+                    </td>
+                </tr>
+                <tr id="trBeneficiary" style="display:none">
+                    <td class="collapsing">
+                        <label>Beneficiary" *</label>
+                    </td>
+                    <td>
+                        <div class="ui input" style="width: 100%;"><input id="txtBeneficiary" type="text" maxlength="256" autocomplete="off" /></div>
+                    </td>
+                </tr>
+
+                <tr id="trApprover" style="display:none">
+                    <td class="collapsing">
+                        <label>Approver *</label>
+                    </td>
+                    <td>
+                        <div id="ddlApprover" class="ui fluid selection dropdown">
+                            <input id="txtApprover" name="txtChapel" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">-- select approver --</div>
+                            <div id="divApprovers" class="menu">
+                                @Html.Raw(ViewBag.Approvers)
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="/js/app/forwardings/index.js?v=@Env.Versioning()"></script>
+}

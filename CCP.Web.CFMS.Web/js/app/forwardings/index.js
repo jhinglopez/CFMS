@@ -1,4 +1,4 @@
-﻿var cashoutflows_index = {
+﻿var forwardings_index = {
 
     fnInitializeCalendar: function () {
         $('#txtDateToCalendar').calendar({
@@ -14,45 +14,29 @@
         if (_chapel.trim() != "" && _type.trim() != "") {
             $("#ddlChapel").addClass("disabled");
             $("#ddlTranType").addClass("disabled");
-            if (_type.toLowerCase() == "utilitybills") {
-                $("#trCategory").show();
+            if (_type.toLowerCase() == "parishshare") {
                 $("#trTranDate").show();
-                $("#trName").show();
-                $("#trReferenceTitle").show();
+                $("#trName").hide();
                 $("#trAmount").show();
-                $("#trItem").hide();
-                $("#trApprover").hide();
-                $("#lblTranName").text("Assigned Person *");
-            }
-            else if (_type.toLowerCase() == "stipend") {
-                $("#trCategory").show();
-                $("#trTranDate").show();
-                $("#trName").show();
-                $("#trReferenceTitle").show();
-                $("#trAmount").show();
-                $("#trItem").hide();
-                $("#trApprover").hide();
-                $("#lblTranName").text("Recipient *");
-            }
-            else if (_type.toLowerCase() == "services") {
-                $("#trCategory").show();
-                $("#trTranDate").show();
-                $("#trName").show();
-                $("#trReferenceTitle").show();
-                $("#trAmount").show();
+                $("#trVentureTitle").hide();
+                $("#trBeneficiary").hide();
                 $("#trApprover").show();
-                $("#trItem").hide();
-                $("#lblTranName").text("Service Provider *");
             }
-            else if (_type.toLowerCase() == "supplies") {
-                $("#trCategory").show();
+            else if (_type.toLowerCase() == "ventureallocation") {
                 $("#trTranDate").show();
                 $("#trName").show();
                 $("#trAmount").show();
-                $("#trItem").show();
+                $("#trVentureTitle").show();
+                $("#trBeneficiary").hide();
                 $("#trApprover").show();
-                $("#trReferenceTitle").hide();
-                $("#lblTranName").text("Assigned Person *");
+            }
+            else if (_type.toLowerCase() == "assistancefund") {
+                $("#trTranDate").show();
+                $("#trName").show();
+                $("#trAmount").show();
+                $("#trVentureTitle").hide();
+                $("#trBeneficiary").show();
+                $("#trApprover").show();
             }
         }
     },
@@ -62,16 +46,15 @@
     },
 
     fnClearConfirmation: function () {
-        helpers.fnModal("Are you sure you want to cancel this transaction?", "confirm", cashoutflows_index.fnClear)
+        helpers.fnModal("Are you sure you want to cancel this transaction?", "confirm", forwardings_index.fnClear)
     },
 
     fnNewTransaction: function () {
-        $("#txtCategory").val("");
         $("#txtTranDate").val("");
         $("#txtName").val("");
-        $("#txtReferenceTitle").val("");
-        $("#txtItem").val("");
         $("#txtAmount").val("");
+        $("#txtVentureTitle").val("");
+        $("#txtBeneficiary").val("");
         $("#txtApprover").val("");
     },
 
@@ -80,19 +63,17 @@
         $("#ddlTranType").removeClass("disabled");
         $("#ddlChapel").dropdown("clear");
         $("#ddlTranType").dropdown("clear");
-        $("#txtCategory").val("");
         $("#txtTranDate").val("");
         $("#txtName").val("");
-        $("#txtReferenceTitle").val("");
         $("#txtAmount").val("");
-        $("#txtItem").val("");
-        $("#ddlApprover").dropdown("clear");
-        $("#trCategory").hide();
+        $("#txtVentureTitle").val("");
+        $("#txtBeneficiary").val("");
+        $("#txtApprover").val("");
         $("#trTranDate").hide();
         $("#trName").hide();
-        $("#trReferenceTitle").hide();
         $("#trAmount").hide();
-        $("#trItem").hide();
+        $("#trVentureTitle").hide();
+        $("#trBeneficiary").hide();
         $("#trApprover").hide();
     },
 
@@ -104,6 +85,7 @@
     fnDecimalAmount: function () {
         $("#txtAmount").val(Number($("#txtAmount").val()).toFixed(2));
     }
+
 };
 
 $(function () {
@@ -111,30 +93,30 @@ $(function () {
     $("#ddlChapel").dropdown();
     $("#ddlTranType").dropdown();
     $("#ddlApprover").dropdown();
-    cashoutflows_index.fnInitializeCalendar();
+    forwardings_index.fnInitializeCalendar();
 
     $("#btnSave").on("click", function () {
-        cashoutflows_index.fnSave();
+        forwardings_index.fnSave();
     });
 
     $("#btnClear").on("click", function () {
-        cashoutflows_index.fnClearConfirmation();
+        forwardings_index.fnClearConfirmation();
     });
 
     $("#ddlChapel").change(function () {
-        cashoutflows_index.fnInitializeDetails();
+        forwardings_index.fnInitializeDetails();
     });
 
     $("#ddlTranType").change(function () {
-        cashoutflows_index.fnInitializeDetails();
+        forwardings_index.fnInitializeDetails();
     });
 
     $("#txtAmount").keyup(function (event) {
-        cashoutflows_index.fnFormatAmount();
+        forwardings_index.fnFormatAmount();
     });
 
     $("#txtAmount").change(function (event) {
-        cashoutflows_index.fnDecimalAmount();
+        forwardings_index.fnDecimalAmount();
     });
 
 });

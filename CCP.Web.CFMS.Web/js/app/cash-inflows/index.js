@@ -137,6 +137,10 @@
     fnFormatAmount: function () {
         var _amount = $("#txtAmount").val();
         $("#txtAmount").val(helpers.fnFormatAmount(_amount));
+    },
+
+    fnDecimalAmount: function () {
+        $("#txtAmount").val(Number($("#txtAmount").val()).toFixed(2));
     }
 
 };
@@ -165,6 +169,10 @@ $(function () {
 
     $("#txtAmount").keyup(function (event) {
         cashinflows_index.fnFormatAmount();
+    });
+
+    $("#txtAmount").change(function (event) {
+        cashinflows_index.fnDecimalAmount();
     });
 
 });

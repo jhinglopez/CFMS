@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CCP.Web.CFMS.Web.Controllers
 {
+    [Authorize]
     public class TransactionsCashOutFlowsController : Controller
     {
         [Route("Transactions/Cash-Out-Flows")]

@@ -219,6 +219,7 @@
     <Content Include="js\app\chapels\edit.js" />
     <Content Include="js\app\chapels\index.js" />
     <Content Include="js\app\common\helpers.js" />
+    <Content Include="js\app\forwardings\index.js" />
     <Content Include="js\app\login\login.js" />
     <Content Include="js\app\roles\add.js" />
     <Content Include="js\app\roles\edit.js" />
