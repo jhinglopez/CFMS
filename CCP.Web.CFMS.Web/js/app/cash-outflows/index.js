@@ -25,22 +25,22 @@
                 $("#lblTranName").text("Assigned Person *");
             }
             else if (_type.toLowerCase() == "stipend") {
-                $("#trCategory").show();
                 $("#trTranDate").show();
                 $("#trName").show();
                 $("#trReferenceTitle").show();
                 $("#trAmount").show();
+                $("#trCategory").hide();
                 $("#trItem").hide();
                 $("#trApprover").hide();
                 $("#lblTranName").text("Recipient *");
             }
             else if (_type.toLowerCase() == "services") {
-                $("#trCategory").show();
                 $("#trTranDate").show();
                 $("#trName").show();
                 $("#trReferenceTitle").show();
                 $("#trAmount").show();
                 $("#trApprover").show();
+                $("#trCategory").hide();
                 $("#trItem").hide();
                 $("#lblTranName").text("Service Provider *");
             }
@@ -58,7 +58,68 @@
     },
 
     fnSave: function () {
-
+        var _chapelId = $("#txtChapel").val();
+        var _tranType = $("#txtTranType").val();
+        var _category = $("#txtCategory").val();
+        var _tranDate = $("#txtTranDate").val();
+        var _tranName = $("#txtName").val();
+        var _referenceTitle = $("#txtReferenceTitle").val();
+        var _item = $("#txtItem").val();
+        var _amount = $("#txtAmount").val();
+        var _approver = $("#txtApprover").val();
+        if ($('#trCategory').is(':visible') && _category.trim() == "") {
+            helpers.fnModal("Save failed. Vendor is a required field.", "error");
+        }
+        else if (_tranDate.trim() == "") {
+            helpers.fnModal("Save failed. Transaction date is a required field.", "error");
+        }
+        else if (_tranName.trim() == "") {
+            helpers.fnModal("Save failed. Transaction name is a required field.", "error");
+        }
+        else if ($('#trReferenceTitle').is(':visible') && _referenceTitle.trim() == "") {
+            helpers.fnModal("Save failed. Reference title is a required field.", "error");
+        }
+        else if ($('#trItem').is(':visible') && _item.trim() == "") {
+            helpers.fnModal("Save failed. Item is a required field.", "error");
+        }
+        else if (_amount.trim() == "") {
+            helpers.fnModal("Save failed. Amount is a required field.", "error");
+        }
+        else if (!helpers.fnIsValidAmount(_amount)) {
+            helpers.fnModal("Save failed. Invalid amount.", "error");
+        }
+        else if ($('#trApprover').is(':visible') && _approver.trim() == "") {
+            helpers.fnModal("Save failed. Approver is a required field.", "error");
+        }
+        else {
+            $.ajax({
+                url: window.location.origin + "/TransactionsCashOutFlows/SaveCashOutflows",
+                data: {
+                    chapelId: _chapelId,
+                    tranType: _tranType,
+                    category: _category,
+                    tranDate: _tranDate,
+                    name: _tranName,
+                    referenceTitle: _referenceTitle,
+                    amount: _amount,
+                    itemName: _item,
+                    approvalUserId: _approver
+                },
+                type: "POST",
+                cache: false,
+                success: function (result) {
+                    if (result == "") {
+                        helpers.fnModal("The record has been saved successfully.", "callback", cashoutflows_index.fnNewTransaction);
+                    }
+                    else {
+                        helpers.fnModal(result, "error");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    helpers.fnModal("There has been an internal script error that unable to save the record. Please try it again later.", "error");
+                }
+            });
+        }
     },
 
     fnClearConfirmation: function () {
@@ -72,6 +133,7 @@
         $("#txtReferenceTitle").val("");
         $("#txtItem").val("");
         $("#txtAmount").val("");
+        $("#ddlApprover").dropdown("clear");
         $("#txtApprover").val("");
     },
 
@@ -93,6 +155,7 @@
         $("#trReferenceTitle").hide();
         $("#trAmount").hide();
         $("#trItem").hide();
+        $("#ddlApprover").dropdown("clear");
         $("#trApprover").hide();
     },
 

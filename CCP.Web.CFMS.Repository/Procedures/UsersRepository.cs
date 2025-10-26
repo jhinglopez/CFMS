@@ -27,21 +27,21 @@ namespace CCP.Web.CFMS.Repository.Procedures
             }
         }
 
-        public static void SaveUsers(string username, string fullname, string roleId, string auditUser)
+        public static void SaveUsers(string username, string fullname, string roleId, string securitySignum, string auditUser)
         {
             using (CFMSEntities db = new CFMSEntities())
             {
                 db.Database.CommandTimeout = commandTimeOut;
-                db.Database.ExecuteSqlCommand("dbo.usp_SaveUsers {0},{1},{2},{3}", username, fullname, roleId, auditUser);
+                db.Database.ExecuteSqlCommand("dbo.usp_SaveUsers {0},{1},{2},{3},{4}", username, fullname, roleId, securitySignum, auditUser);
             }
         }
 
-        public static string UpdateUsers(string id, string username, string fullname, string email, string roleId, string auditUser)
+        public static string UpdateUsers(string id, string username, string fullname, string email, string roleId, string securitySignum, string auditUser)
         {
             using (CFMSEntities db = new CFMSEntities())
             {
                 db.Database.CommandTimeout = commandTimeOut;
-                ScalarModel item = db.Database.SqlQuery<ScalarModel>("dbo.usp_UpdateUsers {0},{1},{2},{3},{4},{5}", id, username, fullname, email, roleId, auditUser).ToList().First();
+                ScalarModel item = db.Database.SqlQuery<ScalarModel>("dbo.usp_UpdateUsers {0},{1},{2},{3},{4},{5},{6}", id, username, fullname, email, roleId, securitySignum, auditUser).ToList().First();
                 return item.Result;
             }
         }

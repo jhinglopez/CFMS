@@ -4,12 +4,12 @@ GO
 
 CREATE PROCEDURE dbo.usp_UpdateUsers
 
-	@ChapelId NVARCHAR(128),
 	@Id NVARCHAR(128),
 	@UserName NVARCHAR(128),
 	@FullName NVARCHAR(256),
 	@Email NVARCHAR(256),
 	@RoleId NVARCHAR(128),
+	@SecuritySignum NVARCHAR(1),
 	@AuditUser NVARCHAR(256)
 
 AS
@@ -24,9 +24,9 @@ IF NOT EXISTS (SELECT 1 FROM dbo.AspNetUsers WHERE UserName = @UserName AND Id !
 				UPDATE 	dbo.AspNetUsers
 				SET 	UserName = @UserName,
 						FullName = @FullName,
-						Email = @Email
+						Email = @Email,
+						SecuritySignum = @SecuritySignum
 				WHERE 	Id = @Id
-				AND 	ChapelId = @ChapelId
 				--
 				UPDATE	dbo.AspNetUserRoles
 				SET 	RoleId = @RoleId

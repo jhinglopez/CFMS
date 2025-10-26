@@ -66,7 +66,7 @@ namespace CCP.Web.CFMS.Web.Controllers
         }
 
         [HttpPost]
-        public string SaveUsers(string username, string password, string fullname, string email, string roleId)
+        public string SaveUsers(string username, string password, string fullname, string email, string roleId, string approver)
         {
             string result = "";
             try
@@ -75,7 +75,7 @@ namespace CCP.Web.CFMS.Web.Controllers
                 var result1 = UserManager.Create(user, password);
                 if (result1.Succeeded)
                 {
-                    UsersServices.SaveUsers(username, fullname, roleId, System.Web.HttpContext.Current.User.Identity.Name);
+                    UsersServices.SaveUsers(username, fullname, roleId, approver, System.Web.HttpContext.Current.User.Identity.Name);
                 }
                 else
                 {
@@ -96,12 +96,12 @@ namespace CCP.Web.CFMS.Web.Controllers
         }
 
         [HttpPost]
-        public string UpdateUsers(string id, string username, string fullname, string email, string roleId)
+        public string UpdateUsers(string id, string username, string fullname, string email, string roleId, string approver)
         {
             string result = "";
             try
             {
-                result = UsersServices.UpdateUsers(id, username, fullname, email, roleId, System.Web.HttpContext.Current.User.Identity.Name);
+                result = UsersServices.UpdateUsers(id, username, fullname, email, roleId, approver, System.Web.HttpContext.Current.User.Identity.Name);
             }
             catch (Exception e)
             {

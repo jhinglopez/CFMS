@@ -16,14 +16,14 @@ namespace CCP.Web.CFMS.Serevices
             return UsersRepository.GetUsersById(id);
         }
 
-        public static void SaveUsers(string username, string fullname, string roleId, string auditUser)
+        public static void SaveUsers(string username, string fullname, string roleId, string securitySignum, string auditUser)
         {
-            UsersRepository.SaveUsers(username, fullname, roleId, auditUser);
+            UsersRepository.SaveUsers(username, fullname, roleId, securitySignum, auditUser);
         }
 
-        public static string UpdateUsers(string id, string username, string fullname, string email, string roleId, string auditUser)
+        public static string UpdateUsers(string id, string username, string fullname, string email, string roleId, string securitySignum, string auditUser)
         {
-            return UsersRepository.UpdateUsers(id, username, fullname, email, roleId, auditUser);
+            return UsersRepository.UpdateUsers(id, username, fullname, email, roleId, securitySignum, auditUser);
         }
 
         public static void DeleteUsers(string id)

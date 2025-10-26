@@ -1,5 +1,6 @@
 ﻿using CCP.Web.CFMS.Domain;
 using CCP.Web.CFMS.Serevices;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
@@ -14,6 +15,21 @@ namespace CCP.Web.CFMS.Web.Controllers
         {
             ViewBag.Chapels = GetListItemsChapels();
             return View();
+        }
+
+        [HttpPost]
+        public string SaveCashInFlows(string chapelId, string tranType, string tranDate, string name, string referenceTitle, decimal amount, string acknowledgementReceipt)
+        {
+            string result = "";
+            try
+            {
+                CashInFlowsServices.SaveCashInFlows(chapelId, tranType, tranDate, name, referenceTitle, amount, acknowledgementReceipt, System.Web.HttpContext.Current.User.Identity.Name);
+            }
+            catch (Exception e)
+            {
+                result = "Save failed. " + e.Message;
+            }
+            return result;
         }
 
         private string GetListItemsChapels()

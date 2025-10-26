@@ -42,7 +42,63 @@
     },
 
     fnSave: function () {
-
+        var _chapelId = $("#txtChapel").val();
+        var _tranType = $("#txtTranType").val();
+        var _tranDate = $("#txtTranDate").val();
+        var _tranName = $("#txtName").val();
+        var _amount = $("#txtAmount").val();
+        var _ventureTitle = $("#txtVentureTitle").val();
+        var _beneficiary = $("#txtBeneficiary").val();
+        var _approver = $("#txtApprover").val();
+        if (_tranDate.trim() == "") {
+            helpers.fnModal("Save failed. Transaction date is a required field.", "error");
+        }
+        else if ($('#trName').is(':visible') && _tranName.trim() == "") {
+            helpers.fnModal("Save failed. Key person is a required field.", "error");
+        }
+        else if (_amount.trim() == "") {
+            helpers.fnModal("Save failed. Amount is a required field.", "error");
+        }
+        else if (!helpers.fnIsValidAmount(_amount)) {
+            helpers.fnModal("Save failed. Invalid amount.", "error");
+        }
+        else if ($('#trVentureTitle').is(':visible') && _ventureTitle.trim() == "") {
+            helpers.fnModal("Save failed. Venture title is a required field.", "error");
+        }
+        else if ($('#trBeneficiary').is(':visible') && _beneficiary.trim() == "") {
+            helpers.fnModal("Save failed. Beneficiary is a required field.", "error");
+        }
+        else if (_approver.trim() == "") {
+            helpers.fnModal("Save failed. Approver is a required field.", "error");
+        }
+        else {
+            $.ajax({
+                url: window.location.origin + "/TransactionsForwardings/SaveForwardings",
+                data: {
+                    chapelId: _chapelId,
+                    tranType: _tranType,
+                    tranDate: _tranDate,
+                    name: _tranName,
+                    amount: _amount,
+                    ventureTitle: _ventureTitle,
+                    beneficiary: _beneficiary,
+                    approvalUserId: _approver
+                },
+                type: "POST",
+                cache: false,
+                success: function (result) {
+                    if (result == "") {
+                        helpers.fnModal("The record has been saved successfully.", "callback", forwardings_index.fnNewTransaction);
+                    }
+                    else {
+                        helpers.fnModal(result, "error");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    helpers.fnModal("There has been an internal script error that unable to save the record. Please try it again later.", "error");
+                }
+            });
+        }
     },
 
     fnClearConfirmation: function () {
@@ -55,6 +111,7 @@
         $("#txtAmount").val("");
         $("#txtVentureTitle").val("");
         $("#txtBeneficiary").val("");
+        $("#ddlApprover").dropdown("clear");
         $("#txtApprover").val("");
     },
 
@@ -74,6 +131,7 @@
         $("#trAmount").hide();
         $("#trVentureTitle").hide();
         $("#trBeneficiary").hide();
+        $("#ddlApprover").dropdown("clear");
         $("#trApprover").hide();
     },
 

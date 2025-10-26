@@ -4,10 +4,10 @@ GO
 
 CREATE PROCEDURE dbo.usp_SaveUsers
 
-	@ChapelId NVARCHAR(128),
 	@UserName NVARCHAR(128),
 	@FullName NVARCHAR(256),
 	@RoleId NVARCHAR(128),
+	@SecuritySignum NVARCHAR(1),
 	@AuditUser NVARCHAR(256)
 
 AS
@@ -16,8 +16,8 @@ SET NOCOUNT ON
 DECLARE @Id NVARCHAR(128) = (SELECT Id FROM dbo.AspNetUsers WHERE UserName = @UserName)
 
 UPDATE	dbo.AspNetUsers
-SET		ChapelId = @ChapelId,
-		FullName = @FullName,
+SET		FullName = @FullName,
+		SecuritySignum = @SecuritySignum,
 		AuditCreateDate = GETDATE(),
 		AuditCreateUser = @AuditUser,
 		AuditUpdateDate = GETDATE(),

@@ -16,6 +16,12 @@
                         $("#txtFullName").val(item.FullName);
                         $("#txtEmail").val(item.Email);
                         $("#ddlRole").dropdown("set selected", item.RoleId);
+                        if (item.SecuritySignum == "1") {
+                            $("#chkApprover").prop("checked", true);
+                        }
+                        else {
+                            $("#chkApprover").prop("checked", false);
+                        }
                         if (item.UserName.toLowerCase() == "admin") {
                             $("#btnSave").hide();
                         }
@@ -33,6 +39,10 @@
         var _fullname = $("#txtFullName").val();
         var _email = $("#txtEmail").val();
         var _roleId = $("#txtRole").val();
+        var _approver = "0";
+        if ($("#chkApprover").prop("checked")) {
+            _approver = "1";
+        }
         if (_username.trim() == "") {
             helpers.fnModal("Save failed. Username is a required field.", "error");
         }
@@ -56,7 +66,8 @@
                     username: _username,
                     fullname: _fullname,
                     email: _email,
-                    roleId: _roleId
+                    roleId: _roleId,
+                    approver: _approver
                 },
                 type: "POST",
                 cache: false,

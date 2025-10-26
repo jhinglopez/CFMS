@@ -6,6 +6,10 @@
         var _email = $("#txtEmail").val();
         var _password = $("#txtPassword").val();
         var _roleId = $("#txtRole").val();
+        var _approver = "0";
+        if ($("#chkApprover").prop("checked")) {
+            _approver = "1";
+        }
         if (_username.trim() == "") {
             helpers.fnModal("Save failed. Username is a required field.", "error");
         }
@@ -33,7 +37,8 @@
                     password: _password,
                     fullname: _fullname,
                     email: _email,
-                    roleId: _roleId
+                    roleId: _roleId,
+                    approver: _approver
                 },
                 type: "POST",
                 cache: false,

@@ -68,7 +68,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CFMS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Procedures\CashInFlowsRepository.cs" />
+    <Compile Include="Procedures\CashOutFlowsRepository.cs" />
     <Compile Include="Procedures\ChapelsRepository.cs" />
+    <Compile Include="Procedures\ForwardingsRepository.cs" />
     <Compile Include="Procedures\PagesRepository.cs" />
     <Compile Include="Procedures\RolesRepository.cs" />
     <Compile Include="Procedures\UsersRepository.cs" />

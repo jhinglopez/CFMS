@@ -4,7 +4,6 @@ GO
 
 CREATE PROCEDURE dbo.usp_GetUsersById
 
-	@ChapelId NVARCHAR(128),
 	@Id NVARCHAR(256)
 
 AS
@@ -14,6 +13,7 @@ SELECT 		a.Id,
 			a.Email, 
 			a.UserName, 
 			a.FullName, 
+			a.SecuritySignum,
 			a.AuditCreateDate, 
 			a.AuditCreateUser, 
 			a.AuditUpdateDate, 
@@ -22,6 +22,5 @@ SELECT 		a.Id,
 FROM 		dbo.AspNetUsers a
 LEFT JOIN 	dbo.AspNetUserRoles b ON a.Id = b.UserId
 WHERE 		a.Id = @Id
-AND 		a.ChapelId = @ChapelId
 GO
 

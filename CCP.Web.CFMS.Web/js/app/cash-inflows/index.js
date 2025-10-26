@@ -74,6 +74,8 @@
     },
 
     fnSave: function () {
+        var _chapelId = $("#txtChapel").val();
+        var _tranType = $("#txtTranType").val();
         var _tranDate = $("#txtTranDate").val();
         var _tranName = $("#txtName").val();
         var _referenceTitle = $("#txtReferenceTitle").val();
@@ -98,10 +100,31 @@
             helpers.fnModal("Save failed. Acknowledgement receipt is a required field.", "error");
         }
         else {
-            _amount = Number(_amount).toFixed(2);
-            $("#txtAmount").val(_amount);
-            alert("Saved! ");
-            cashinflows_index.fnNewTransaction();
+            $.ajax({
+                url: window.location.origin + "/TransactionsCashInFlows/SaveCashInFlows",
+                data: {
+                    chapelId: _chapelId,
+                    tranType: _tranType,
+                    tranDate: _tranDate,
+                    name: _tranName,
+                    referenceTitle: _referenceTitle,
+                    amount: _amount,
+                    acknowledgementReceipt: _acknowledgementReceipt
+                },
+                type: "POST",
+                cache: false,
+                success: function (result) {
+                    if (result == "") {
+                        helpers.fnModal("The record has been saved successfully.", "callback", cashinflows_index.fnNewTransaction);
+                    }
+                    else {
+                        helpers.fnModal(result, "error");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    helpers.fnModal("There has been an internal script error that unable to save the record. Please try it again later.", "error");
+                }
+            });
         }
     },
 
